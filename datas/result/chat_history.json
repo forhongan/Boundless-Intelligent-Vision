@@ -3,5 +3,15 @@
         "timestamp": "2024-10-25T23:12:12.009817",
         "user_input": "This is a test!",
         "ai_response": "这是一项测试！"
+    },
+    {
+        "timestamp": "2024-10-25T23:18:50.679126",
+        "user_input": "This is a test!",
+        "ai_response": "这是一个测试！"
+    },
+    {
+        "timestamp": "2024-10-25T23:33:04.052243",
+        "user_input": "AUTO SKIP SAVE LOAD Log MENU CONFIG CLOSE TITLE This is a test!",
+        "ai_response": "自动 跳过 保存 加载 日志 菜单 配置 关闭 标题 这是一个测试！"
     }
 ]

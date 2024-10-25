@@ -4,7 +4,7 @@ import os
 from datetime import datetime  
 
 #读取设置的内容
-with open('./config/_config.json', 'r', encoding='utf-8') as file:  
+with open('./config/ai_config.json', 'r', encoding='utf-8') as file:  
     config_data = json.load(file)  
     ENDPOINT=config_data.get('Azure_setting').get("path").get("azure_chat_api")
     API_KEY=config_data.get('Azure_setting').get("key").get("azure_api_key")
@@ -13,10 +13,11 @@ with open('./config/_config.json', 'r', encoding='utf-8') as file:
 #读取需要翻译的内容
 with open('./datas/log/test1.json', 'r', encoding='utf-8') as file:  
     data = json.load(file) 
-    text_input = data.get('rec_text')
-    #print(text_input)
-
-text_input = "This is a test!"
+    rec_text_list = data.get('rec_text') 
+    text_input = ' '.join(rec_text_list) #将内容转换为字符串防止错误
+    
+print(text_input)
+#text_input = "This is a test!"
 print("Hello,this is biv.")
 
 prompt_input = "请将输入的内容翻译为简体中文"

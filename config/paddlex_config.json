@@ -1,0 +1,4 @@
+{
+    "img_path" : "../data/img",
+    "output_path" : "../data/ocr_result"
+}
