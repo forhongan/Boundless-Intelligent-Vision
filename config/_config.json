@@ -1,0 +1,19 @@
+{
+    "Azure_setting":
+    {
+        "path":
+        {
+            "azure_endpoint":"https://vm101a.openai.azure.com",
+            "azure_chat_api":"https://vm101a.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-02-15-preview"
+        },
+        
+        "key":
+        {
+            "azure_api_key":"66397f887f1b40c1b1b15faf4779ebd9"
+        }
+        
+    }
+
+    
+    
+}
