@@ -4,3 +4,5 @@ Boundless Intelligent Vision 是一个基于PaddleOCR和 Microsoft Azure Openai 
 
 
 正在开发......
+
+运行BIV.py
