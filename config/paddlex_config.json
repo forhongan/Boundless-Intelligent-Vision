@@ -1,4 +1,12 @@
 {
-    "img_path" : "../data/img",
-    "output_path" : "../data/ocr_result"
+    "user_setting": {
+        "img_path": "./datas/img",
+        "output_path": "./datas/ocr_result",
+        "lang": "en"
+    },
+    "default_setting": {
+        "img_path": "./datas/img",
+        "output_path": "./datas/ocr_result",
+        "lang": "en"
+    }
 }

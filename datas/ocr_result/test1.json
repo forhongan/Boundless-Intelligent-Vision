@@ -1,5 +1,5 @@
 {
-    "input_path": "images_test/test1.png",
+    "input_path": "./datas/img\\test1.png",
     "dt_polys": [
         [
             [
@@ -204,7 +204,7 @@
         "CONFIG",
         "CLOSE",
         "TITLE",
-        "This is a test!"
+        "但最爱的人的体温，实在太舒服了。"
     ],
     "rec_score": [
         0.9388379454612732,
