@@ -19,8 +19,7 @@ headers = {
     "api-key": API_KEY,  
 }  
   
-# 读取 ./datas/ocr_result/ 文件夹下的所有 .json 文件  
-#ocr_result_dir = './datas/ocr_result'  
+ 
 for filename in os.listdir(ocr_result_dir):  
     if filename.endswith('.json'):  
         file_path = os.path.join(ocr_result_dir, filename)  
