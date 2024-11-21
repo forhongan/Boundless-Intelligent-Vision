@@ -1,7 +1,5 @@
 import json
 import glob
-import tkinter as tk  
-from tkinter import filedialog, messagebox  
 import os
 import re  
 #防止编码错误

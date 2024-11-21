@@ -1,0 +1,86 @@
+import tkinter as tk  
+from tkinter import messagebox, filedialog  
+import json  
+import subprocess  
+import webbrowser  
+  
+# 加载JSON文件  
+def load_json(file_path):  
+    with open(file_path, 'r', encoding='utf-8') as file:  
+        return json.load(file)  
+  
+# 更新JSON文件  
+def update_json(file_path, data):  
+    with open(file_path, 'w', encoding='utf-8') as file:  
+        json.dump(data, file, ensure_ascii=False, indent=4)  
+  
+# 配置路径函数  
+def configure_paths(config_path, default_key):  
+    config_data = load_json(config_path)  
+    settings = config_data[default_key]  
+      
+    # 在输入框中显示默认路径  
+    img_path_var.set(settings['img_path'])  
+    output_path_var.set(settings['output_path'])  
+  
+# 打开GitHub项目链接  
+def open_github():  
+    webbrowser.open('https://github.com/your_project_url')  
+  
+# 发送反馈邮件  
+def send_feedback():  
+    webbrowser.open('mailto:your_email@example.com')  
+  
+# 启动OCR和翻译程序  
+def start_process():  
+    img_path = img_path_var.get()  
+    output_path = output_path_var.get()  
+      
+    # 更新配置文件  
+    config_data = load_json(paddlex_config_path)  
+    config_data['user_setting']['img_path'] = img_path  
+    config_data['user_setting']['output_path'] = output_path  
+    update_json(paddlex_config_path, config_data)  
+  
+    # 启动OCR程序  
+    result = subprocess.run(['python', 'pocr.py'], capture_output=True, text=True)  
+    if result.returncode == 0:  
+        messagebox.showinfo("Success", "OCR成功完成。\n正在启动翻译...")  
+        subprocess.run(['python', 'translater.py'])  
+    else:  
+        messagebox.showerror("Error", "OCR执行失败，请检查错误信息。")  
+        print(result.stderr)  
+  
+# 创建主窗口  
+def main():  
+    global img_path_var, output_path_var, paddlex_config_path  
+    paddlex_config_path = './config/paddlex_config.json'  
+      
+    root = tk.Tk()  
+    root.title("OCR 和 翻译工具")  
+    root.geometry("500x300")  
+  
+    # 创建输入框和标签  
+    tk.Label(root, text="图像路径:").pack(pady=5)  
+    img_path_var = tk.StringVar()  
+    img_path_entry = tk.Entry(root, textvariable=img_path_var, width=50)  
+    img_path_entry.pack(pady=5)  
+  
+    tk.Label(root, text="输出路径:").pack(pady=5)  
+    output_path_var = tk.StringVar()  
+    output_path_entry = tk.Entry(root, textvariable=output_path_var, width=50)  
+    output_path_entry.pack(pady=5)  
+  
+    # 加载默认路径  
+    configure_paths(paddlex_config_path, "user_setting")  
+  
+    # 创建按钮  
+    tk.Button(root, text="开始", command=start_process).pack(pady=10)  
+    tk.Button(root, text="帮助", command=lambda: messagebox.showinfo("帮助", "请设置路径后点击开始。")).pack(pady=5)  
+    tk.Button(root, text="发送反馈", command=send_feedback).pack(pady=5)  
+    tk.Button(root, text="访问GitHub", command=open_github).pack(pady=5)  
+  
+    root.mainloop()  
+  
+if __name__ == "__main__":  
+    main()  
