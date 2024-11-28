@@ -24,11 +24,14 @@ def configure_paths(config_path, default_key):
   
 # 打开 GitHub 项目页面  
 def open_github():  
-    webbrowser.open('https://github.com/your_project_url')  
+    webbrowser.open('https://github.com/forhongan/Boundless-Intelligent-Vision')  
   
 # 打开邮件客户端发送反馈  
 def send_feedback():  
-    webbrowser.open('mailto:your_email@example.com')  
+    email = '1220023205@student.must.edu.mo'  
+    subject = '反馈主题'  
+    body = '这是反馈内容。'  
+    webbrowser.open(f'mailto:{email}?subject={subject}&body={body}')  
   
 # 启动 OCR 处理过程并处理结果  
 def start_process():  
@@ -117,4 +120,4 @@ def main():
   
 # 程序入口  
 if __name__ == "__main__":  
-    main()  
+    main() 
