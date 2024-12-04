@@ -1,0 +1,235 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">  
+    <title>Boundless Intelligent Vision-无界视觉项目</title>  
+  
+    <!-- Main StyleSheet -->  
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">  
+    <link rel="icon" type="image/png" href="images/favicon.png">  
+  
+    <link rel="stylesheet" href="owl-slider/assets/owl.carousel.min.css">  
+    <link rel="stylesheet" href="owl-slider/assets/owl.theme.default.min.css">  
+    <link rel="stylesheet" href="fonts/icons-fontawesome/css/all.min.css">  
+    <link rel="stylesheet" href="fonts/icons-linear.css">  
+    <link href="bxslider/jquery.bxslider.css" rel="stylesheet" />  
+    <link href="style.css" rel="stylesheet" type="text/css" />  
+    <link href="style-global.css" rel="stylesheet" type="text/css" />  
+    <link href="style-responsive.css" rel="stylesheet" type="text/css" />  
+  
+    <script src="js/jquery.js"></script>  
+    <script src="owl-slider/owl.carousel.js"></script>  
+    <script src="js/scripts.js"></script>  
+    <script>  
+        jQuery(document).ready(function( $ ) {  
+            $('.counter').counterUp({  
+                delay: 10,  
+                time: 2000  
+            });  
+        });  
+    </script>  
+    <script src="contactform/contactform.js"></script>  
+</head>  
+<body id="home">  
+  
+<div class="topbar flf zidx5">  
+    <div class="container">  
+        <h3>  
+            <a href="mailto:#"><span class="fa-solid fa-envelope"></span> forhongan@gmail.com</a>  
+        </h3>  
+    </div>  
+</div> <!--topbar-->  
+  
+<header class="p_fixed_basic zidx2 ts_1 fw">  
+    <div class="container dflex_basic">  
+        <h2>Boundless Intelligent Vision-无界视觉项目</h2>  
+        <div class="menuicons" style="display:none;">  
+            <a href="javascript:void();" class="shownav">  
+                <span class="fa-solid fa-bars"></span>  
+            </a>  
+            <a href="javascript:void();" class="hidenav" style="display:none;">  
+                <span class="fa-solid fa-times"></span>  
+            </a>  
+        </div>  
+        <nav class="headernav" id="headnav">  
+            <ul>  
+                <li class="active"><a href="#home">主页</a></li>  
+                <li><a href="#about">关于我们</a></li>  
+                <li><a href="#features">功能介绍</a></li>  
+                <li><a href="#team">成员介绍</a></li>  
+                <li><a href="#usage">使用说明</a></li>  
+                <li><a href="#contact">联系管理</a></li>  
+                <li><a id="loginButton">登入</a></li>  
+            </ul>  
+        </nav>  
+    </div>  
+</header> <!--header-->  
+  
+<div class="banner">  
+    <div class="container">  
+        <h2>Ai多功能场景翻译器现正开放体验中!!!</h2>  
+    </div>  
+    <img src="images/bg2.jpg" alt="" class="img_basic imgfit_basic aspectratio_16_8" />  
+</div> <!--/banner-->  
+  
+<div class="about" id="about">  
+    <div class="container">  
+        <div class="aboutcontent flf dflex_basic">  
+            <div class="text">  
+                <h3>关于我们的项目</h3>  
+                <h5 class="afterborder_1">A software engineering project based on AI-OCR and large language model text processing (translation)一个基于Ai-OCR和大语言模型文本处理（翻译）的软件工程项目</h5>  
+                <p>我们是来自澳门科技大学的软件工程小组
+                    Boundless Intelligent Vision 项目依托于 PaddleX 和 Microsoft Azure 服务，致力于一站式解决全场景，多语言的翻译问题和从图像到文本（音频）的场景分析
+                    </p>  
+            </div>  
+            <div class="imagearea">  
+                <img src="images/bg3.png" alt="" class="img_basic imgfit_basic aspectratio_1_1" />  
+            </div>  
+        </div>  
+    </div>  
+</div>  
+  
+<div class="features" id="features">  
+    <div class="container">  
+        <div class="featurecontent flf dflex_basic">  
+            <div class="imagearea">  
+                <img src="images/feature.png" alt="" class="img_basic imgfit_basic aspectratio_1_1" />  
+            </div>  
+            <div class="text">  
+                <h3>功能介绍</h3>  
+                <h5 class="afterborder_1">体验强大的AI翻译功能</h5>  
+                <ul>  
+                    <li>文本检测和提取：使用OCR技术从各种图像中提取文本。</li>  
+                    <li>翻译：混合翻译模型支持多种语言。</li>  
+                    <li>用户界面：直观易用的Web界面。</li>  
+                    <li>反馈机制：通过用户反馈提升翻译准确性。</li>  
+                    <li>本地化和适应性：兼容多种操作系统和设备。</li>  
+                </ul>  
+                <form id="translationForm" method="post" enctype="multipart/form-data">  
+                    <input type="file" name="image" accept="image/*" required>  
+                    <div>  
+                        <input type="checkbox" id="translation" name="translation" value="translation">  
+                        <label for="translation">翻译</label>  
+                    </div>  
+                    <div>  
+                        <input type="checkbox" id="customPrompt" name="customPrompt" value="customPrompt">  
+                        <label for="customPrompt">自定义提示</label>  
+                    </div>  
+                    <input type="text" id="customPromptText" name="customPromptText" placeholder="自定义提示文本">  
+                    <button type="submit">处理</button>  
+                </form>  
+            </div>  
+        </div>  
+    </div>  
+</div>  
+  
+<div class="team" id="team">  
+    <div class="container">  
+        <h2>成员介绍</h2>  
+        <h3>我们的团队成员</h3>  
+        <div class="teamcontent flf dflex_basic_2 dflex_wrap">  
+            <div class="member">  
+                <img src="images/pic1.jpg" alt="Member 1" class="img_basic imgfit_basic aspectratio_1_1" />  
+                <h4>forhongan</h4>  
+                <p>项目主管
+					主程序
+					Web资源维护
+					</p>  
+            </div>  
+            <div class="member">  
+                <img src="images/pic2.jpg" alt="Member 2" class="img_basic imgfit_basic aspectratio_1_1" />  
+                <h4>MWY</h4>  
+                <p>Web设计
+                    前端工程
+                    </p>  
+            </div>  
+            <div class="member">  
+                <img src="images/pic3.jpg" alt="Member 3" class="img_basic imgfit_basic aspectratio_1_1" />  
+                <h4>WZ</h4>  
+                <p>后端开发
+                    接口整合                    
+                    </p>  
+            </div>  
+            <div class="member">  
+                <img src="images/pic4.jpg" alt="Member 4" class="img_basic imgfit_basic aspectratio_1_1" />  
+                <h4>LYQ</h4>  
+                <p>美术设计
+                    调试
+                    后端开发
+                    </p>  
+            </div> 
+        </div>  
+    </div>  
+</div>  
+  
+<div class="usage" id="usage">  
+    <div class="container">  
+        <h2>使用说明</h2>  
+        <h3>如何使用我们的翻译器</h3>  
+        <div class="usagecontent flf">  
+            <ol>  
+                <li>选择并上传您需要翻译的图像。</li>  
+                <li>选择所需的处理选项，如翻译或自定义提示。</li>  
+                <li>点击“处理”按钮以启动翻译过程。</li>  
+                <li>查看并下载翻译结果。</li>  
+            </ol>  
+            <p>我们的翻译器提供强大的语言支持，适用于一般用户、商业用户以及开发者。</p>  
+        </div>  
+    </div>  
+</div>  
+  
+<div class="contact flf" id="contact">  
+    <div class="container">  
+        <h2>联系管理</h2>  
+        <h3>给出你的建议~</h3>  
+        <div class="contactblock flf dflex_basic_2 dflex_wrap dflex_fd_rr">  
+            <div class="contactinfo">  
+                <div class="infowrap flf">  
+                    <div class="info">  
+                        <span class="fa-solid fa-envelope"></span>  
+                        <h4>Email:</h4>  
+                        <p>  
+                            <a href="mailto:#">forhongan@gmail.com</a>  
+                        </p>  
+                    </div>  
+                </div>  
+            </div>  
+            <form class="contactform" id="contactform" method="post" action="contactform/contactform.php">  
+                <input type="text" name="name" placeholder="称呼" required>  
+                <input type="email" name="email" placeholder="邮箱地址" required>  
+                <textarea name="message" placeholder="想说的话"></textarea>  
+                <button name="submit" id="contactform_btn" type="submit">  
+                    发送 <span class="fa-solid fa-angle-right"></span>  
+                </button>  
+            </form>  
+        </div> <!--contactblock-->  
+    </div>  
+</div> <!--/contact-->  
+  
+<footer class="flf">  
+    <div class="container dflex_basic dflex_wrap">  
+        <div class="copyright">  
+            Copyright &copy; <span class="year"></span> Boundless Intelligent Vision-无界视觉项目  
+        </div>  
+        <div class="socialmedia">  
+            <a href="#"><span class="fa-brands fa-facebook"></span></a>  
+            <a href="#"><span class="fa-brands fa-twitter"></span></a>  
+            <a href="#"><span class="fa-brands fa-instagram"></span></a>  
+            <a href="#"><span class="fa-brands fa-pinterest"></span></a>  
+            <a href="#"><span class="fa-brands fa-youtube"></span></a>  
+        </div>  
+    </div>  
+</footer> <!--footer-->  
+  
+<script>  
+    var menuid = '#headnav';  
+    var gaptop = 135;  
+    var scrollspeed = 1200;  
+    var menu_active_class = 'active';  
+</script>  
+<script src="js/bliss.js"></script>  
+<script src="js/waypoints.min.js"></script>  
+<script src="js/jquery.counterup.js"></script>  
+</body>  
+</html>  
