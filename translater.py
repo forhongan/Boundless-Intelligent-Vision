@@ -63,17 +63,17 @@ for filename in os.listdir(ocr_result_dir):
                 result = response.json()  
   
                 # Extract AI response  
-                ai_response = result['choices'][0]['message']['content']  
+                translate_result = result['choices'][0]['message']['content']  
   
                 # Prepare log entry  
                 log_entry = {  
                     "timestamp": datetime.now().isoformat(),  
                     "user_input": text_input,  
-                    "ai_response": ai_response  
+                    "translate_result": translate_result  
                 }  
   
                 # Print AI response  
-                print(ai_response)  
+                print(translate_result)  
   
                 # Write to a log file with the same name as the input file  
                 log_file_name = os.path.splitext(filename)[0] + ".json"  

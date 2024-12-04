@@ -52,13 +52,13 @@ try:
     result = response.json()  
   
     # Extract AI response  
-    ai_response = result['choices'][0]['message']['content']  
+    translate_result = result['choices'][0]['message']['content']  
   
     # Prepare log entry  
     log_entry = {  
         "timestamp": datetime.now().isoformat(),  
         "user_input": user_input,  
-        "ai_response": ai_response  
+        "translate_result": translate_result  
     }  
   
     # Write to a log file  
@@ -75,7 +75,7 @@ try:
         json.dump(history, log_file, ensure_ascii=False, indent=4)  
   
     # Print AI response  
-    print(ai_response)  
+    print(translate_result)  
   
 except requests.RequestException as e:  
     raise SystemExit(f"Failed to make the request. Error: {e}")  
