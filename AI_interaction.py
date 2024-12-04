@@ -23,6 +23,21 @@ headers = {
     "api-key": API_KEY,  
 }  
   
+def resize_image_to_fill(image_path, canvas_width, canvas_height):  
+    image = Image.open(image_path)  
+    original_width, original_height = image.size  
+  
+    # 计算适合画布的缩放比例，保持图片的宽高比  
+    scale = max(canvas_width / original_width, canvas_height / original_height)  
+      
+    # 计算新的图片尺寸  
+    new_width = int(original_width * scale)  
+    new_height = int(original_height * scale)  
+  
+    # 调整图片大小  
+    resized_image = image.resize((new_width, new_height), Image.LANCZOS)  
+    return resized_image  
+  
 def process_files(selected_prompts, include_translation, output_text_widget, custom_prompt_text, save_to_file):  
     for filename in os.listdir(ocr_result_dir):  
         if filename.endswith('.json'):  
@@ -133,8 +148,7 @@ def create_gui():
     canvas.pack(fill="both", expand=True)  
   
     # 加载和设置背景图片  
-    background_image = Image.open("src/assets/background/background.png")  
-    background_image = background_image.resize((600, 550), Image.LANCZOS)  
+    background_image = resize_image_to_fill("src/assets/background/background2.png", 600, 550)  
     background_photo = ImageTk.PhotoImage(background_image)  
     canvas.create_image(0, 0, image=background_photo, anchor="nw")  
   
