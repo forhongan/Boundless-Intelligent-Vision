@@ -65,6 +65,18 @@ def start_process():
         messagebox.showerror("Error", "OCR执行失败，请检查错误信息。")  
         print(result.stderr)  
   
+# 选择输入文件路径
+def select_input_file():
+    file_path = filedialog.askopenfilename()
+    if file_path:
+        img_path_var.set(file_path)
+
+# 选择输出文件路径
+def select_output_file():
+    file_path = filedialog.askdirectory()
+    if file_path:
+        output_path_var.set(file_path)
+
 # 启动 AI_interaction 脚本  
 def start_ai_interaction():  
     def run_ai_interaction():  
@@ -77,6 +89,25 @@ def start_ai_interaction():
       
     # 在新线程中运行 AI 交互脚本  
     threading.Thread(target=run_ai_interaction).start()  
+
+# 保存设置到 user_setting
+def save_settings():
+    img_path = img_path_var.get()
+    output_path = output_path_var.get()
+    config_data = load_json(paddlex_config_path)
+    config_data['user_setting']['img_path'] = img_path
+    config_data['user_setting']['output_path'] = output_path
+    update_json(paddlex_config_path, config_data)
+    messagebox.showinfo("Success", "设置已保存到 user_setting。")
+
+# 还原默认设置
+def restore_settings():
+    config_data = load_json(paddlex_config_path)
+    default_settings = config_data['default_setting']
+    config_data['user_setting'] = default_settings
+    update_json(paddlex_config_path, config_data)
+    configure_paths(paddlex_config_path, "user_setting")
+    messagebox.showinfo("Success", "已还原默认设置。")
   
 # 主函数，设置 GUI 和事件绑定  
 def main():  
@@ -114,6 +145,10 @@ def main():
     img_path_var = tk.StringVar()  
     img_path_entry = tk.Entry(root, textvariable=img_path_var, width=50)  
     canvas.create_window(350, 130, window=img_path_entry)  
+
+    # 新增选择输入文件按钮
+    select_input_button = ttk.Button(root, text="选择文件", command=select_input_file, style="TButton")
+    canvas.create_window(500, 130, window=select_input_button)
   
     # 设置输出路径输入框和标签  
     output_path_label = tk.Label(root, text="输出路径:", bg="lightgray")  
@@ -122,6 +157,10 @@ def main():
     output_path_var = tk.StringVar()  
     output_path_entry = tk.Entry(root, textvariable=output_path_var, width=50)  
     canvas.create_window(350, 170, window=output_path_entry)  
+
+    # 新增选择输出文件夹按钮
+    select_output_button = ttk.Button(root, text="选择文件夹", command=select_output_file, style="TButton")
+    canvas.create_window(500, 170, window=select_output_button)
   
     # 加载默认路径配置  
     configure_paths(paddlex_config_path, "user_setting")  
@@ -132,6 +171,14 @@ def main():
   
     start_button = ttk.Button(root, text="开始", command=start_process, style="TButton")  
     canvas.create_window(300, 220, window=start_button)  
+
+    # 新增保存设置按钮
+    save_button = ttk.Button(root, text="保存设置", command=save_settings, style="TButton")
+    canvas.create_window(100, 220, window=save_button)
+
+    # 新增还原设置按钮
+    restore_button = ttk.Button(root, text="还原设置", command=restore_settings, style="TButton")
+    canvas.create_window(500, 220, window=restore_button)
   
     help_button = ttk.Button(root, text="帮助", command=lambda: messagebox.showinfo("帮助", "请设置路径后点击开始。"), style="TButton")  
     canvas.create_window(300, 260, window=help_button)  
@@ -150,4 +197,4 @@ def main():
   
 # 程序入口  
 if __name__ == "__main__":  
-    main()  
+    main()

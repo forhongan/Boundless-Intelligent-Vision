@@ -1,6 +1,6 @@
 {
     "user_setting": {
-        "img_path": "./datas/img",
+        "img_path": "D:/SoftwareEngineering/Boundless Intelligent Vision-beta/datas/img/en_test1.png",
         "output_path": "./datas/ocr_result",
         "lang": "en"
     },

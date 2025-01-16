@@ -5,6 +5,7 @@ from datetime import datetime
 import tkinter as tk  
 from tkinter import messagebox, ttk, scrolledtext  
 from PIL import Image, ImageTk  
+import subprocess 
   
 # 读取配置文件  
 with open('./config/ai_config.json', 'r', encoding='utf-8') as file:  
@@ -179,6 +180,11 @@ def create_gui():
     canvas.create_window(300, y_offset, window=tk.Checkbutton(root, text="输出文件", variable=save_to_file_var, bg="lightgray"))  
     y_offset += 30  
   
+    # 添加“进行OCR识别”选项  
+    ocr_var = tk.BooleanVar(value=True)  # 默认勾选  
+    canvas.create_window(300, y_offset, window=tk.Checkbutton(root, text="进行OCR识别（除非你已经有过识别记录，否则请勾选该项选项）", variable=ocr_var, bg="lightgray"))  
+    y_offset += 30  
+  
     # 添加输出文本框  
     output_text = scrolledtext.ScrolledText(root, width=70, height=10, wrap=tk.WORD)  
     canvas.create_window(300, 400, window=output_text)  
@@ -188,7 +194,17 @@ def create_gui():
         if not selected_prompts and not translation_var.get():  
             messagebox.showwarning("警告", "请选择至少一个处理选项。")  
             return  
+  
         output_text.delete('1.0', tk.END)  # 清空输出框  
+  
+        # 如果选择了进行OCR识别，先运行pocr.py  
+        if ocr_var.get():  
+            try:  
+                subprocess.run(['python', './pocr.py'], check=True)  
+            except subprocess.CalledProcessError as e:  
+                messagebox.showerror("错误", f"OCR识别失败。错误: {e}")  
+                return  
+  
         custom_prompt_text = custom_prompt_entry.get() if custom_prompt_entry else ""  
         process_files(selected_prompts, translation_var.get(), output_text, custom_prompt_text, save_to_file_var.get())  
         messagebox.showinfo("信息", "处理完成！")  
