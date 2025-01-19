@@ -149,7 +149,7 @@ def create_gui():
     canvas.pack(fill="both", expand=True)  
   
     # 加载和设置背景图片  
-    background_image = resize_image_to_fill("src/assets/background/background2.png", 600, 550)  
+    background_image = resize_image_to_fill("src/assets/background/background2.jpg", 600, 550)  
     background_photo = ImageTk.PhotoImage(background_image)  
     canvas.create_image(0, 0, image=background_photo, anchor="nw")  
   

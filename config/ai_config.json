@@ -7,14 +7,14 @@
         "key": {
             "azure_api_key": "66397f887f1b40c1b1b15faf4779ebd9"
         },
-        "prompt": "将输入的文本集中非简体中文的部分翻译为简体中文,需注意的是,输入内容可能被'[ ]'切分成了不同的小块,需要输出这些小块对应的内容,并用'[ ]'将对应每个小块的翻译结果输出.例如输入'[This is a] [beautiful printing]',你的输出应为'[这是一幅] [美丽的画作]',绝对不要改变顺序或者增减[]的数量",
+        "prompt": "Translate the non-English parts of the input text into English. Note that the input may be split into different segments by '[ ]'. You need to output the corresponding content for each segment, and enclose the translation result of each segment in '[ ]'. For example, if the input is '[這是一幅] [美麗的畫作]', your output should be '[This is a] [beautiful printing]'. Do not change the order or add/remove any '[]'.",
         "interaction_prompt": {
-            "场景描述(描述图像所展现的场景)": "这是从某幅图像中提取文字得到的结果,请猜测这是一个什么样的场景",
-            "解决问题(如果图像中存在题目)": "根据提供的文字解决问题,如果文本散乱,先将这些文字整理成合适的格式并输出,再解决问题",
+            "Scene Description (describe the scene shown in the image)": "This is the result of extracting text from an image. Please guess what kind of scene this is.",
+            "Solve the Problem (if there is a problem in the image)": "Solve the problem based on the provided text. If the text is scattered, organize it into a suitable format and output it, then solve the problem.",
             "custom_prompt": ""
-        }
+        },
+        "language": "en"
     },
-
     "default_setting": {
         "path": {
             "azure_endpoint": "https://vm101a.openai.azure.com",
@@ -23,57 +23,48 @@
         "key": {
             "azure_api_key": "66397f887f1b40c1b1b15faf4779ebd9"
         },
-
-
         "prompt_cn": "将输入的文本集中非简体中文的部分翻译为简体中文,需注意的是,输入内容可能被'[ ]'切分成了不同的小块,需要输出这些小块对应的内容,并用'[ ]'将对应每个小块的翻译结果输出.例如输入'[This is a] [beautiful printing]',你的输出应为'[这是一幅] [美丽的画作]',绝对不要改变顺序或者增减[]的数量",
         "interaction_prompt_cn": {
             "场景描述(描述图像所展现的场景)": "这是从某幅图像中提取文字得到的结果,请猜测这是一个什么样的场景",
             "解决问题(如果图像中存在题目)": "根据提供的文字解决问题,如果文本散乱,先将这些文字整理成合适的格式并输出,再解决问题",
             "custom_prompt": ""
         },
-
         "prompt_cnt": "將輸入的文本集中非繁體中文的部分翻譯為繁體中文，需注意的是，輸入內容可能被'[ ]'切分成了不同的小塊，需要輸出這些小塊對應的內容，並用'[ ]'將對應每個小塊的翻譯結果輸出。例如輸入'[This is a] [beautiful printing]'，你的輸出應為'[這是一幅] [美麗的畫作]'，絕對不要改變順序或者增減[]的數量。",
         "interaction_prompt_cnt": {
             "場景描述(描述圖像所展現的場景)": "這是從某幅圖像中提取文字得到的結果，請猜測這是一個什麼樣的場景。",
             "解決問題(如果圖像中存在題目)": "根據提供的文字解決問題，如果文本散亂，先將這些文字整理成合適的格式並輸出，再解決問題。",
             "custom_prompt": ""
         },
-
         "prompt_en": "Translate the non-English parts of the input text into English. Note that the input may be split into different segments by '[ ]'. You need to output the corresponding content for each segment, and enclose the translation result of each segment in '[ ]'. For example, if the input is '[這是一幅] [美麗的畫作]', your output should be '[This is a] [beautiful printing]'. Do not change the order or add/remove any '[]'.",
         "interaction_prompt_en": {
             "Scene Description (describe the scene shown in the image)": "This is the result of extracting text from an image. Please guess what kind of scene this is.",
             "Solve the Problem (if there is a problem in the image)": "Solve the problem based on the provided text. If the text is scattered, organize it into a suitable format and output it, then solve the problem.",
             "custom_prompt": ""
         },
-
         "prompt_fr": "Traduisez les parties non françaises du texte d'entrée en français. Notez que l'entrée peut être divisée en différents segments par '[ ]'. Vous devez sortir le contenu correspondant pour chaque segment et entourer le résultat de la traduction de chaque segment par '[ ]'. Par exemple, si l'entrée est '[這是一幅] [美麗的畫作]', votre sortie devrait être '[Ceci est une] [impression magnifique]'. Ne changez pas l'ordre ou n'ajoutez/supprimez aucun '[]'.",
         "interaction_prompt_fr": {
             "Description de la scène (décrire la scène montrée dans l'image)": "Ceci est le résultat de l'extraction de texte d'une image. Veuillez deviner quel type de scène c'est.",
             "Résoudre le problème (s'il y a un problème dans l'image)": "Résolvez le problème en fonction du texte fourni. Si le texte est dispersé, organisez-le dans un format approprié et sortez-le, puis résolvez le problème.",
             "custom_prompt": ""
         },
-
         "prompt_de": "Übersetzen Sie die nicht-deutschen Teile des Eingabetextes ins Deutsche. Beachten Sie, dass die Eingabe möglicherweise durch '[ ]' in verschiedene Segmente unterteilt ist. Sie müssen den entsprechenden Inhalt für jedes Segment ausgeben und das Übersetzungsergebnis jedes Segments in '[ ]' einschließen. Zum Beispiel, wenn die Eingabe '[這是一幅] [美麗的畫作]' ist, sollte Ihre Ausgabe '[Dies ist ein] [schönes Gemälde]' sein. Ändern Sie nicht die Reihenfolge oder fügen Sie keine '[]' hinzu/entfernen Sie keine.",
         "interaction_prompt_de": {
             "Szenenbeschreibung (beschreiben Sie die in dem Bild gezeigte Szene)": "Dies ist das Ergebnis der Textextraktion aus einem Bild. Bitte raten Sie, um welche Art von Szene es sich handelt.",
             "Problem lösen (wenn es ein Problem im Bild gibt)": "Lösen Sie das Problem basierend auf dem bereitgestellten Text. Wenn der Text verstreut ist, organisieren Sie ihn in ein geeignetes Format und geben Sie ihn aus, dann lösen Sie das Problem.",
             "custom_prompt": ""
         },
-
         "prompt_ja": "入力テキストの非日本語部分を日本語に翻訳してください。入力は '[ ]' で異なるセグメントに分割されている可能性があります。各セグメントに対応する内容を出力し、各セグメントの翻訳結果を '[ ]' で囲んでください。例えば、入力が '[這是一幅] [美麗的畫作]' の場合、出力は '[これは] [美しい絵です]' であるべきです。順序を変更したり、'[]' を追加/削除しないでください。",
         "interaction_prompt_ja": {
             "シーンの説明（画像に表示されているシーンを説明してください）": "これは画像からテキストを抽出した結果です。このシーンがどのようなものか推測してください。",
             "問題を解決する（画像に問題がある場合）": "提供されたテキストに基づいて問題を解決してください。テキストが散らばっている場合は、適切な形式に整理して出力し、その後問題を解決してください。",
             "custom_prompt": ""
         },
-
         "prompt_ko": "입력 텍스트의 비한국어 부분을 한국어로 번역하세요. 입력은 '[ ]'로 다른 세그먼트로 나뉘어져 있을 수 있습니다. 각 세그먼트에 해당하는 내용을 출력하고, 각 세그먼트의 번역 결과를 '[ ]'로 묶어 출력하세요. 예를 들어, 입력이 '[這是一幅] [美麗的畫作]'이라면, 출력은 '[이것은] [아름다운 그림입니다]'이어야 합니다. 순서를 변경하거나 '[]'를 추가/제거하지 마세요.",
         "interaction_prompt_ko": {
             "장면 설명 (이미지에 표시된 장면 설명)": "이것은 이미지에서 텍스트를 추출한 결과입니다. 이 장면이 어떤 장면인지 추측해보세요.",
             "문제 해결 (이미지에 문제가 있을 경우)": "제공된 텍스트를 기반으로 문제를 해결하세요. 텍스트가 흩어져 있으면 적절한 형식으로 정리하여 출력한 후 문제를 해결하세요.",
             "custom_prompt": ""
         },
-        
         "prompt_pt": "Traduza as partes não-portuguesas do texto de entrada para o português. Observe que a entrada pode estar dividida em diferentes segmentos por '[ ]'. Você precisa fornecer o conteúdo correspondente para cada segmento e envolver o resultado da tradução de cada segmento em '[ ]'. Por exemplo, se a entrada for '[這是一幅] [美麗的畫作]', sua saída deve ser '[Este é um] [belo quadro]'. Não altere a ordem ou adicione/remova quaisquer '[]'.",
         "interaction_prompt_pt": {
             "Descrição da Cena (descreva a cena mostrada na imagem)": "Este é o resultado de extrair texto de uma imagem. Por favor, adivinhe que tipo de cena é esta.",

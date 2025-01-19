@@ -73,7 +73,7 @@ for filename in os.listdir(ocr_result_dir):
                 }  
   
                 # Print AI response  
-                print(translate_result)  
+                # print(translate_result)  
   
                 # Write to a log file with the same name as the input file  
                 log_file_name = os.path.splitext(filename)[0] + ".json"  
