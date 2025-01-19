@@ -44,7 +44,8 @@ def convert_unicode_to_utf8_in_folder(folder_path):
 with open('./config/paddlex_config.json', 'r', encoding='utf-8') as file:  
     config_data = json.load(file)  
     input_path=config_data.get('user_setting').get('img_path')
-    output_path=config_data.get('user_setting').get('output_path')
+    #output_path=config_data.get('user_setting').get('output_path')
+    output_path="datas\ocr_result"
 
 from paddlex import create_pipeline
 

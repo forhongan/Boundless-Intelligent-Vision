@@ -5,11 +5,16 @@ from PIL import Image, ImageDraw, ImageFont
 # 默认字体路径（请根据操作系统调整路径）  
 font_path = "C:/Windows/Fonts/SimHei.ttf"  
   
-# 定义文件夹路径  
-ocr_result_folder = 'datas/ocr_result'  
+with open('./config/paddlex_config.json', 'r', encoding='utf-8') as file:  
+    config_data = json.load(file)  
+    biv_result_folder=config_data.get('user_setting').get('output_path')
+    img_folder=config_data.get('user_setting').get('img_path')# 添加原始图像文件夹路径 
+    #output_path=config_data.get('user_setting').get('output_path')
+    ocr_result_folder="datas\ocr_result"
+
+# 定义文件夹路径   
 result_folder = 'datas/result'  
 textfill_folder = 'datas/textfill'  
-biv_result_folder = 'datas/biv_result'  
   
 # 确保目标文件夹存在  
 os.makedirs(textfill_folder, exist_ok=True)  
