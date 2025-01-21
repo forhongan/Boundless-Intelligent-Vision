@@ -2,7 +2,9 @@ import requests
 import json  
 import os  
 from datetime import datetime  
-  
+
+print("Program started.")  
+
 # 读取设置的内容  
 with open('./config/ai_config.json', 'r', encoding='utf-8') as file:  
     config_data = json.load(file)  
@@ -12,7 +14,8 @@ with open('./config/ai_config.json', 'r', encoding='utf-8') as file:
  
 with open('./config/paddlex_config.json', 'r', encoding='utf-8') as file: 
     pdx_data=json.load(file)  
-    ocr_result_dir = pdx_data.get('user_setting').get('output_path')    
+    #ocr_result_dir = pdx_data.get('user_setting').get('output_path') 
+    ocr_result_dir = 'datas\ocr_result'
 
 headers = {  
     "Content-Type": "application/json",  
@@ -21,6 +24,7 @@ headers = {
   
  
 for filename in os.listdir(ocr_result_dir):  
+    print(f"Processing file: {filename}")  
     if filename.endswith('.json'):  
         file_path = os.path.join(ocr_result_dir, filename)  
         with open(file_path, 'r', encoding='utf-8') as file:  
@@ -55,11 +59,19 @@ for filename in os.listdir(ocr_result_dir):
                 "top_p": 0.95,  
                 "max_tokens": 800  
             }  
+            
+            # 调试代码：打印请求负载
+            print(f"Request payload: {json.dumps(payload, ensure_ascii=False, indent=4)}")
   
             # Send request  
             try:  
                 response = requests.post(ENDPOINT, headers=headers, json=payload)  
                 response.raise_for_status()  
+                
+                # 调试代码：打印响应状态码和内容
+                print(f"Response status code: {response.status_code}")
+                print(f"Response content: {response.content.decode('utf-8')}")
+                
                 result = response.json()  
   
                 # Extract AI response  
@@ -87,4 +99,4 @@ for filename in os.listdir(ocr_result_dir):
                     json.dump(log_entry, log_file, ensure_ascii=False, indent=4)   
   
             except requests.RequestException as e:  
-                raise SystemExit(f"Failed to make the request. Error: {e}")  
+                raise SystemExit(f"Failed to make the request. Error: {e}")

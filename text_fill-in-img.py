@@ -72,8 +72,8 @@ def fill_text_to_image(data, filename):
   
     draw = ImageDraw.Draw(original_image)  
   
-    font_size = 40  # 初始字体大小  
-    min_font_size = 20  # 最小字体大小  
+    font_size = 60  # 初始字体大小  
+    min_font_size = 30  # 最小字体大小  
   
     try:  
         font = ImageFont.truetype(font_path, font_size)  

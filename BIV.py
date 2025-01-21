@@ -4,8 +4,8 @@ from PIL import Image, ImageTk
 import json  
 import subprocess  
 import webbrowser  
-import threading  # 导入线程模块  
-  
+import threading  
+
 # 加载 JSON 配置文件并返回数据  
 def load_json(file_path):  
     with open(file_path, 'r', encoding='utf-8') as file:  
@@ -70,12 +70,14 @@ def select_input_file():
     file_path = filedialog.askopenfilename()
     if file_path:
         img_path_var.set(file_path)
+        save_settings()
 
 # 选择输出文件路径
 def select_output_file():
     file_path = filedialog.askdirectory()
     if file_path:
         output_path_var.set(file_path)
+        save_settings()
 
 # 启动 AI_interaction 脚本  
 def start_ai_interaction():  
@@ -97,8 +99,8 @@ def save_settings():
     config_data = load_json(paddlex_config_path)
     config_data['user_setting']['img_path'] = img_path
     config_data['user_setting']['output_path'] = output_path
+    config_data['user_setting']['lang'] = interface_language_var.get()
     update_json(paddlex_config_path, config_data)
-    messagebox.showinfo("Success", "设置已保存到 user_setting。")
 
 # 还原默认设置
 def restore_settings():
@@ -273,7 +275,6 @@ def update_ui_texts(language):
     select_input_button.config(text=texts["select_file"])
     select_output_button.config(text=texts["select_folder"])
     start_button.config(text=texts["start_button"])
-    save_button.config(text=texts["save_button"])
     restore_button.config(text=texts["restore_button"])
     help_button.config(text=texts["help_button"])
     feedback_button.config(text=texts["feedback_button"])
@@ -286,12 +287,14 @@ def update_ui_texts(language):
 def on_interface_language_change(event):
     selected_language = interface_language_var.get()
     update_ui_texts(selected_language)
+    save_settings()
     messagebox.showinfo("Success", f"界面语言已切换到 {selected_language}")
 
 # 翻译语言选择回调函数
 def on_translation_language_change(event):
     selected_language = translation_language_var.get()
     update_prompts(selected_language)
+    save_settings()
     messagebox.showinfo("Success", f"翻译语言已切换到 {selected_language}")
 
 # 主函数，设置 GUI 和事件绑定  
@@ -299,7 +302,7 @@ def main():
     global img_path_var, output_path_var, paddlex_config_path, ai_config_path, interface_language_var, translation_language_var
     global root, canvas, title_text, description_text
     global img_path_label, output_path_label, select_input_button, select_output_button
-    global start_button, save_button, restore_button, help_button, feedback_button, github_button, ai_interaction_button, language_label, translation_language_label
+    global start_button, restore_button, help_button, feedback_button, github_button, ai_interaction_button, language_label, translation_language_label
 
     paddlex_config_path = './config/paddlex_config.json'  
     ai_config_path = './config/ai_config.json'
@@ -384,9 +387,9 @@ def main():
     start_button = ttk.Button(root, text="开始", command=start_process, style="TButton")  
     canvas.create_window(350, 290, window=start_button)  
 
-    # 新增保存设置按钮
-    save_button = ttk.Button(root, text="保存设置", command=save_settings, style="TButton")
-    canvas.create_window(150, 290, window=save_button)
+    # 删除保存设置按钮
+    # save_button = ttk.Button(root, text="保存设置", command=save_settings, style="TButton")
+    # canvas.create_window(150, 290, window=save_button)
 
     # 新增还原设置按钮
     restore_button = ttk.Button(root, text="还原设置", command=restore_settings, style="TButton")

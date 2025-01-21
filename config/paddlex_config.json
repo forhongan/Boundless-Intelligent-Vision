@@ -1,8 +1,8 @@
 {
     "user_setting": {
-        "img_path": "D:/boundless_intelligent_test_imagine/sora.png",
+        "img_path": "D:/boundless_intelligent_test_imagine/TIANTIAN.png",
         "output_path": "D:/boundless_output",
-        "lang": "en"
+        "lang": "cn"
     },
     "default_setting": {
         "img_path": "./datas/img",
